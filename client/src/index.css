@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply bg-blue-950;
+}
+
+.gradient {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 50%, rgba(226, 56, 4, 0) 100%);
+}
