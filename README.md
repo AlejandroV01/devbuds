@@ -1,4 +1,4 @@
-# 🌟 Project Name
+# 🌟 DevBuds
 
 ## 🤝 Collaborative Project Platform
 
