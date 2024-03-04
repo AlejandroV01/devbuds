@@ -28,6 +28,7 @@ To run this project locally, follow these steps:
 
    ```bash
    cd devbuds
+   cd client
    ```
 
 3. Install dependencies:
