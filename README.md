@@ -21,13 +21,13 @@ To run this project locally, follow these steps:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/AlejandroV01/init-build-web-dev-1
+   git clone https://github.com/AlejandroV01/devbuds
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd init-build-web-dev-1
+   cd devbuds
    ```
 
 3. Install dependencies:
