@@ -1,10 +1,10 @@
-# 🌟 Project Name
+# 🌟 DevBuds
 
 ## 🤝 Collaborative Project Platform
 
 ### 📝 Description
 
-Our project is a collaborative platform where people can post their project ideas and find team members with specific skills. When posting a project idea, you can specify the number of people you need in specific roles. For example, you might post an idea for the next great social media app and specify that you need 5 frontend developers, 5 backend developers, and 3 UI/UX designers. Others can then apply to these roles, and the original poster can approve these applications. This platform is primarily being built with React.js, Typescript, and Tailwind CSS. It's not intended for commercial use, but rather as a space for people to find others to collaborate with and build projects together.
+DevBuds is a collaborative platform where people can post their project ideas and find team members with specific skills. When posting a project idea, you can specify the number of people you need in specific roles. For example, you might post an idea for the next great social media app and specify that you need 5 frontend developers, 5 backend developers, and 3 UI/UX designers. Others can then apply to these roles, and the original poster can approve these applications. This platform is primarily being built with React.js, Typescript, and Tailwind CSS. It's not intended for commercial use, but rather as a space for people to find others to collaborate with and build projects together.
 
 ### 🛠️ Technologies Used
 
@@ -13,8 +13,6 @@ Our project is a collaborative platform where people can post their project idea
 - TypeScript
 - Tailwind CSS
 - Supabase (a SQL-based database)
-- Express
-- Node.js
 
 ### 🚀 Installation
 
@@ -23,13 +21,14 @@ To run this project locally, follow these steps:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/AlejandroV01/init-build-web-dev-1
+   git clone https://github.com/AlejandroV01/devbuds
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd init-build-web-dev-1
+   cd devbuds
+   cd client
    ```
 
 3. Install dependencies:
