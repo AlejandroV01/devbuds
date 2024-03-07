@@ -21,7 +21,7 @@ const Auth = () => {
   return (
     <div>
       <h1>Auth</h1>
-      {session ? <p>Signed In</p> : <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />}
+      {session && <p>Signed In</p>}
     </div>
   )
 }
