@@ -6,6 +6,7 @@ import ErrorPage from './error-page.tsx'
 import './index.css'
 import Home from './routes/Home.tsx'
 import Root from './routes/Root.tsx'
+import StoreProvider from './store/StoreProvider.tsx'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -21,8 +22,10 @@ const router = createBrowserRouter([
 ])
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme='system' storageKey='vite-ui-theme'>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <StoreProvider>
+      <ThemeProvider defaultTheme='system' storageKey='vite-ui-theme'>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </StoreProvider>
   </React.StrictMode>
 )
