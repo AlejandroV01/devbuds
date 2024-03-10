@@ -3,7 +3,7 @@ import { ChangeEvent } from "react";
 interface InputProps {
   type: string;
   value: string;
-  name: string;
+  name?: string;
   id?: string;
   disabled?: boolean;
   placeholder?: string;
