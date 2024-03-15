@@ -1,5 +1,4 @@
 import React from 'react'
-import PaginationButton from './paginationButtons';
 import { render } from 'react-dom';
 
 type onPageChangeType = (n: number) => void;
@@ -81,7 +80,7 @@ const lastPageButton = (totalPages: number, onPageChange: onPageChangeType) => {
  */
 const getRenderNumbers = (currentPage: number, totalPages: number) => {
   
-  const renderSize: number = 5;
+  const renderSize: number = 3;
   const distribution: number = Math.floor(renderSize / 2)
   const numbers: number[] = [];
   let startPage: number, lastPage: number;
