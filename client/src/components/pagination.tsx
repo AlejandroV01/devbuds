@@ -1,5 +1,4 @@
 import React from 'react'
-import { render } from 'react-dom';
 
 type onPageChangeType = (n: number) => void;
 
