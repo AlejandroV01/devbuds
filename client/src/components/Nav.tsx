@@ -1,62 +1,31 @@
-import supabase from '@/lib/supabaseClient'
-import { Session, createClient } from '@supabase/supabase-js'
-import Reactm, { useEffect, useState } from 'react'
-import { IoSearch } from 'react-icons/io5'
+import { redirect } from 'react-router-dom'
+import Button from './Button'
 import { ModeToggle } from './mode-toggle'
-
 const Nav = () => {
-  const [session, setSession] = useState<Session | null>(null)
-  useEffect(() => {
-    console.log(session)
-    handleSessionCheck()
-  }, [session])
-  const handleSessionCheck = () => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
-  }
-  const handleSignUp = async (email: string, password: string) => {
-    const { user, session, error } = await supabase.auth.signUp({
-      email,
-      password,
-    })
-    handleSessionCheck()
-    console.log(user, session, error)
-  }
-  const handleSignIn = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-    handleSessionCheck()
-    console.log(data, error)
-  }
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut()
-    handleSessionCheck()
-    console.log(error)
-  }
   return (
-    <div>
-      <div className=' w-full  h-[25px] bg-primary flex items-center justify justify-between px-[2%] text-white'>
-        <div className='font-bold flex items-center text-lg'>devBuds</div>
-        <div>
-          <IoSearch color='' />
-        </div>
-        <button></button>
-        <button></button>
-        <p>{!session ? 'NOT SIGNED IN' : 'SIGNED IN'}</p>
-        <button className='p-2 bg-sky-500' onClick={() => handleSignUp('alexvera0109@gmail.com', '1234567')}>
-          Mock Sign Up
-        </button>
-        <button className='p-2 bg-sky-500' onClick={() => handleSignIn('alexvera0109@gmail.com', '1234567')}>
-          Mock Sign In
-        </button>
-        <button className='p-2 bg-destructive' onClick={handleSignOut}>
-          Sign Out
-        </button>
+    <div className='flex justify-between container items-center  h-[60px]'>
+      <h2 className='font-bold text-xl'>
+        <a href='/'>Devbuds</a>
+      </h2>
+      <ul className='flex gap-5 font-medium [&>*]:hover:cursor-pointer'>
+        <li>
+          <a href='/projects'>Projects</a>
+        </li>
+        <li>
+          <a href='/about'>About</a>
+        </li>
+      </ul>
+      <div className='items-center flex gap-5'>
+        <a href='/login'>
+          <Button variant='secondary'>Log in</Button>
+        </a>
+
+        <a href='/signup'>
+          <Button variant='primary'>Sign up</Button>
+        </a>
+
+        <ModeToggle />
       </div>
-      <ModeToggle />
     </div>
   )
 }
