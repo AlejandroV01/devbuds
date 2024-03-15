@@ -10,12 +10,17 @@ type PaginationProps = {
   onPageChange: onPageChangeType;
 };
 
-// Button to go to previous page
+/**
+ * 
+ * @param currentPage - takes the current page
+ * @param onPageChange - change page handle function
+ * @returns - returns nothing if page is 1
+ */
 const prevButton = (currentPage: number, onPageChange: onPageChangeType) => {
   if (currentPage > 1) {
-    const buttonContent = '< Previous';
+    const buttonContent = '<';
     return (
-      <button className='px-1' onClick={() => onPageChange(currentPage - 1)}>
+      <button className={getButtonStyling()} onClick={() => onPageChange(currentPage - 1)}>
         {buttonContent}
       </button>
     )
@@ -24,13 +29,19 @@ const prevButton = (currentPage: number, onPageChange: onPageChangeType) => {
 };
 
 
-// Button to go to next page
+/**
+ * 
+ * @param currentPage - takes the current page
+ * @param totalPages - takes the total pages available or requested
+ * @param onPageChange - change page handle function
+ * @returns - returns nothing if last page
+ */
 const nextButton = (currentPage: number, totalPages: number, onPageChange: onPageChangeType) => {
   console.log(currentPage, totalPages)
   if (currentPage < totalPages) {
-    const buttonContent = 'Next >';
+    const buttonContent = '>';
     return (
-      <button className='px-1' onClick={() => onPageChange(currentPage + 1)}>
+      <button className={getButtonStyling()} onClick={() => onPageChange(currentPage + 1)}>
         {buttonContent}
       </button>
     )
@@ -42,8 +53,8 @@ const nextButton = (currentPage: number, totalPages: number, onPageChange: onPag
 const firstPageButton = () => {
   return (
     <>
-    <button>1</button>
-    <p>. . .</p>
+    <button className={getButtonStyling()}>1</button>
+    <p>...</p>
     </>
   );
 };
@@ -52,22 +63,25 @@ const firstPageButton = () => {
 const lastPageButton = (totalPages: number) => {
   return (
     <>
-    <p>. . .</p>
-    <button>{totalPages}</button>
+    <p>...</p>
+    <button className={getButtonStyling()}>{totalPages}</button>
     </>
   );
 };
 
 
-
+/**
+ * 
+ * @param currentPage - takes current page user is at
+ * @param totalPages - total available pages
+ * @returns - array of possible page numbers to render
+ */
 const getRenderNumbers = (currentPage: number, totalPages: number) => {
   
   const renderSize: number = 5;
   const distribution: number = Math.floor(renderSize / 2)
   const numbers: number[] = [];
   let startPage: number, lastPage: number;
-
-
 
   startPage = Math.max(currentPage - distribution, 1);
   lastPage = Math.min(currentPage + distribution, totalPages);
@@ -93,25 +107,55 @@ const getRenderNumbers = (currentPage: number, totalPages: number) => {
 };
 
 
+/**
+ * 
+ * @param borderColor - Color of button border
+ * @param textColor - Color of text inside button
+ * @param bgColor - Inside button background color
+ * @param isSelected - specify if button is selected (so it's not clickable)
+ * @param borderType - rounded, square, etc
+ * @returns 
+ */
+const getButtonStyling = (borderColor: string = 'border-gray-900', 
+                          textColor: string = 'text-gray-900', 
+                          bgColor: string = '', 
+                          isSelected: boolean = false,
+                          borderType: string = 'rounded-full') => {
+
+  let selected = '';
+
+  if (isSelected) selected = 'focus:outline-none cursor-default'; 
+
+  return  'align-middle select-none font-sans font-bold text-center uppercase' +
+          'transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none' + 
+          `text-xs py-1 px-3 border ${borderColor} ${textColor} ${bgColor} ${selected} hover:opacity-75 focus:ring` + 
+          `focus:ring-gray-300 active:opacity-[0.85] ${borderType}`;
+};
 
 
 const Pagination = ({totalPages, currentPage, onPageChange}: PaginationProps) => {
 
   const renderNumbers = () => {
-    
-  
-    if (true) {
-      const pages: number[] = getRenderNumbers(currentPage, totalPages);
-      return (
-        <>
-          {pages.map( (n) => (
-            <button className={`px-4 ${n === currentPage ? 'bg-red-400': undefined}`} key={n}>
-              {n}
-            </button>
-          ))}
-        </>
-      )
-    }
+    const pages: number[] = getRenderNumbers(currentPage, totalPages);
+    return (
+      <>
+        {pages.map( (n) => (
+          <>
+            {n === currentPage &&(
+              <button className={getButtonStyling('border-primary', 'text-primary', 'bg-primary/20', true)} key={n}>
+                {n}
+              </button>
+            )}
+
+            {n != currentPage &&(
+              <button className={getButtonStyling()} key={n}>
+                {n}
+              </button>
+            )}
+          </>
+        ))}
+      </>
+    );
   };
 
 
@@ -126,7 +170,6 @@ const Pagination = ({totalPages, currentPage, onPageChange}: PaginationProps) =>
 
       {renderNumbers()}
 
-
       {totalPages - currentPage > 4 && (
         lastPageButton(totalPages)
       )}
@@ -134,20 +177,7 @@ const Pagination = ({totalPages, currentPage, onPageChange}: PaginationProps) =>
       {nextButton(currentPage, totalPages, onPageChange)}
 
     </div>
-
-
   );
-
-    // return (
-    //     <div className='flex justify-start items-center space-x-3'>
-    //       <p>{ name }</p>
-    //       <button>{'< Previous'}</button>
-    //       <button onClick={change}>1</button>
-    //       <button>2</button>
-    //       <button>3</button>
-    //       <button>{' Next >'}</button>
-    //     </div>
-    //   )
 };
 
 export default Pagination;
