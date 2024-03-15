@@ -20,7 +20,7 @@ const prevButton = (currentPage: number, onPageChange: onPageChangeType) => {
   if (currentPage > 1) {
     const buttonContent = '<';
     return (
-      <button className={getButtonStyling()} onClick={() => onPageChange(currentPage - 1)}>
+      <button key={'prevButton'} className={getButtonStyling()} onClick={() => onPageChange(currentPage - 1)}>
         {buttonContent}
       </button>
     )
@@ -37,11 +37,10 @@ const prevButton = (currentPage: number, onPageChange: onPageChangeType) => {
  * @returns - returns nothing if last page
  */
 const nextButton = (currentPage: number, totalPages: number, onPageChange: onPageChangeType) => {
-  console.log(currentPage, totalPages)
   if (currentPage < totalPages) {
     const buttonContent = '>';
     return (
-      <button className={getButtonStyling()} onClick={() => onPageChange(currentPage + 1)}>
+      <button key={'nextButton'} className={getButtonStyling()} onClick={() => onPageChange(currentPage + 1)}>
         {buttonContent}
       </button>
     )
@@ -50,21 +49,25 @@ const nextButton = (currentPage: number, totalPages: number, onPageChange: onPag
 };
 
 // Button to jump to the first page
-const firstPageButton = () => {
+const firstPageButton = (onPageChange: onPageChangeType) => {
   return (
     <>
-    <button className={getButtonStyling()}>1</button>
+    <button onClick={() => onPageChange(1)} className={getButtonStyling()} key={'firstPage'}>
+      1
+    </button>
     <p>...</p>
     </>
   );
 };
 
 // Button to jump to the last page
-const lastPageButton = (totalPages: number) => {
+const lastPageButton = (totalPages: number, onPageChange: onPageChangeType) => {
   return (
     <>
     <p>...</p>
-    <button className={getButtonStyling()}>{totalPages}</button>
+    <button onClick={() => onPageChange(totalPages)} className={getButtonStyling()} key={'lastPage'}>
+      {totalPages}
+    </button>
     </>
   );
 };
@@ -139,20 +142,20 @@ const Pagination = ({totalPages, currentPage, onPageChange}: PaginationProps) =>
     const pages: number[] = getRenderNumbers(currentPage, totalPages);
     return (
       <>
-        {pages.map( (n) => (
-          <>
-            {n === currentPage &&(
-              <button className={getButtonStyling('border-primary', 'text-primary', 'bg-primary/20', true)} key={n}>
+        {pages.map((n) => (
+          <React.Fragment key={n}>
+            {n === currentPage && (
+              <button onClick={() => onPageChange(n)} className={getButtonStyling('border-primary', 'text-primary', 'bg-primary/20', true)}>
                 {n}
               </button>
             )}
-
-            {n != currentPage &&(
-              <button className={getButtonStyling()} key={n}>
+    
+            {n !== currentPage && (
+              <button onClick={() => onPageChange(n)} className={getButtonStyling()}>
                 {n}
               </button>
             )}
-          </>
+          </React.Fragment>
         ))}
       </>
     );
@@ -165,13 +168,13 @@ const Pagination = ({totalPages, currentPage, onPageChange}: PaginationProps) =>
       {prevButton(currentPage, onPageChange)}
       
       {currentPage > 3 &&(
-        firstPageButton()
+        firstPageButton(onPageChange)
       )}
 
       {renderNumbers()}
 
       {totalPages - currentPage > 4 && (
-        lastPageButton(totalPages)
+        lastPageButton(totalPages, onPageChange)
       )}
 
       {nextButton(currentPage, totalPages, onPageChange)}
