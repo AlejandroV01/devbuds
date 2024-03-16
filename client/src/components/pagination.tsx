@@ -107,8 +107,6 @@ const getRenderNumbers = (renderSize: number,
   for (let i = startPage; i <= lastPage; i++) {
     numbers.push(i);
   }
-  
-  console.log(startPage, totalPages)
 
   return numbers;
 };
@@ -142,7 +140,9 @@ const getButtonStyling = (borderColor: string = 'border-gray-900',
 
 const render = ({currentPage, totalPages, onPageChange}: PaginationProps) => {
 
-  const renderSize: number = 3;
+  // renderSize represents how many page numbers will be displayed at the same time
+  const renderSize: number = 5;
+  // symmetrical distribution for each side around the renderSize
   const distribution: number = Math.floor(renderSize / 2)
 
   const renderNumbers = () => {
