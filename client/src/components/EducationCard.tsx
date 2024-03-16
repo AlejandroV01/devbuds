@@ -19,9 +19,7 @@ const ExperienceCard: React.FC<EducationCardProps> = ({ educations }) => {
   return (
     <div className="w-[850px] py-5 px-5 pt-4 flex flex-col gap-7 rounded-[8px] drop-shad bg-[#E8E8E8]">
       <div className="flex justify-between items-center">
-        <span className="font-extrabold text-2xl text-black">
-          Work Experience
-        </span>
+        <span className="font-extrabold text-2xl text-black">Education</span>
         <HiPencil color="#7B7B7B" fontSize="18px" />
       </div>
       <div className="flex flex-col gap-7">
