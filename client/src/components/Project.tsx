@@ -14,8 +14,11 @@ const Project = ({
   projectDate,
   description,
 }: ProjectProps) => {
+  if (!hackathonName) {
+    hackathonName = "N/A";
+  }
   return (
-    <div className=" w-full flex flex-col bg-white">
+    <div className=" w-full flex flex-col ">
       <div className="flex gap-4 h-[80px] mb-4 text-black">
         <div className="h-full rounded-[8px] w-[80px] drop-shad bg-primary flex justify-center items-center">
           <BsTools color="white" fontSize={"45px"} />
