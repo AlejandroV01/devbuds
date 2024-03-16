@@ -1,10 +1,17 @@
+import React from 'react'
+import { IconBaseProps } from 'react-icons'
 interface BadgeProps {
   variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
   label: string
   size?: 'small' | 'medium' | 'large'
+  icon?: React.ElementType<IconBaseProps>
+  className?: string
+  onClick?: () => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  key?: any
 }
 
-const Badge = ({ variant, label, size }: BadgeProps) => {
+const Badge: React.FC<BadgeProps> = ({ key, onClick, className, variant, label, size, icon: Icon }: BadgeProps) => {
   const getVariantClasses = () => {
     switch (variant) {
       case 'primary':
@@ -35,7 +42,16 @@ const Badge = ({ variant, label, size }: BadgeProps) => {
     }
   }
 
-  return <span className={`inline-block rounded-full ${getVariantClasses()} ${getSizeClasses()}`}>{label}</span>
+  return (
+    <div
+      key={key}
+      onClick={onClick}
+      className={`${className} flex rounded-full items-center justify-center gap-1 ${getVariantClasses()} ${getSizeClasses()}`}
+    >
+      <span>{label}</span>
+      {Icon && <Icon />}
+    </div>
+  )
 }
 
 export default Badge

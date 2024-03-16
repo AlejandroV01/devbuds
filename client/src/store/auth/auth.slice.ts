@@ -1,24 +1,35 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-export interface IProfile {
-  user_id: number | null
-  username: string
-  email: string
-  password_hash: string
+interface IProfile {
+  id: number | null
   first_name: string
   last_name: string
-  bio?: string
-  created_at: string
+  email: string
+  password_hash: string
+  school: string
+  major: string
+  location: string
+  linkedin_link?: string | null
+  github_link?: string | null
+  portfolio_link?: string | null
+  skills: string[]
+  languages: string[]
+  created_at: Date
+  uuid: string
 }
 const initialState: IProfile = {
-  user_id: null,
-  username: '',
-  email: '',
-  password_hash: '',
+  id: null,
   first_name: '',
   last_name: '',
-  bio: '',
-  created_at: '',
+  email: '',
+  password_hash: '',
+  school: '',
+  major: '',
+  location: '',
+  skills: [],
+  languages: [],
+  created_at: new Date(),
+  uuid: '',
 }
 
 export const authSlice = createSlice({
@@ -28,20 +39,30 @@ export const authSlice = createSlice({
     addProfile: (state, action: PayloadAction<IProfile>) => {
       return {
         ...state,
-        user_id: action.payload.user_id,
-        username: action.payload.username,
-        email: action.payload.email,
-        password_hash: action.payload.password_hash,
+        id: action.payload.id,
         first_name: action.payload.first_name,
         last_name: action.payload.last_name,
-        bio: action.payload.bio,
+        email: action.payload.email,
+        password_hash: action.payload.password_hash,
+        school: action.payload.school,
+        major: action.payload.major,
+        location: action.payload.location,
+        linkedin_link: action.payload.linkedin_link,
+        github_link: action.payload.github_link,
+        portfolio_link: action.payload.portfolio_link,
+        skills: action.payload.skills,
+        languages: action.payload.languages,
         created_at: action.payload.created_at,
+        uuid: action.payload.uuid,
       }
+    },
+    addProfileUuid: (state, action: PayloadAction<string>) => {
+      state.uuid = action.payload
     },
     removeProfile: () => initialState,
   },
 })
 
-export const { addProfile, removeProfile } = authSlice.actions
+export const { addProfile, removeProfile, addProfileUuid } = authSlice.actions
 
 export default authSlice.reducer

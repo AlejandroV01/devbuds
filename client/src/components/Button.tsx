@@ -3,9 +3,10 @@ interface ButtonProps {
   disabled?: boolean
   onClick?: () => void
   children: string
+  className?: string
 }
 
-const Button = ({ variant, disabled = false, onClick, children }: ButtonProps) => {
+const Button = ({ variant, disabled = false, onClick, children, className }: ButtonProps) => {
   const checkButtonVariance = () => {
     switch (variant) {
       case 'primary':
@@ -18,7 +19,11 @@ const Button = ({ variant, disabled = false, onClick, children }: ButtonProps) =
   }
 
   return (
-    <button disabled={disabled} className={`${checkButtonVariance()} px-3 py-1.5 text-white rounded font-medium w-fit`} onClick={onClick}>
+    <button
+      disabled={disabled}
+      className={`${checkButtonVariance()} px-3 py-1.5 text-white rounded font-medium w-fit ${className}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   )
