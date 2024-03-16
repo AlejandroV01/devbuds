@@ -89,16 +89,18 @@ const getRenderNumbers = (renderSize: number,
   startPage = Math.max(currentPage - distribution, 1);
   lastPage = Math.min(currentPage + distribution, totalPages);
 
-  // case for the last 2 pages
-  if ((totalPages - currentPage) <= 1) {
-    startPage = totalPages - renderSize + 1;
-    lastPage = totalPages;
-  }
+  if (totalPages >= renderSize) {
+    // case for the last 2 pages
+    if ((totalPages - currentPage) <= 1) {
+      startPage = totalPages - renderSize + 1;
+      lastPage = totalPages;
+    }
 
-  // case for the first two pages
-  if (currentPage <= 2) {
-    startPage = 1;
-    lastPage = renderSize;
+    // case for the first two pages
+    if (currentPage <= 2) {
+      startPage = 1;
+      lastPage = renderSize;
+    }
   }
   
 
@@ -106,7 +108,7 @@ const getRenderNumbers = (renderSize: number,
     numbers.push(i);
   }
   
-  console.log(distribution)
+  console.log(startPage, totalPages)
 
   return numbers;
 };
@@ -140,20 +142,16 @@ const getButtonStyling = (borderColor: string = 'border-gray-900',
 
 const render = ({currentPage, totalPages, onPageChange}: PaginationProps) => {
 
-  const renderSize: number = 5;
+  const renderSize: number = 3;
   const distribution: number = Math.floor(renderSize / 2)
 
   const renderNumbers = () => {
 
     let pages: number[] = [];
 
-    if (totalPages <= 4) {
-        for (let i = 1; i <= totalPages; i++) {
-          pages.push(i);
-        }
-    } else {
-      pages = getRenderNumbers(renderSize, distribution, currentPage, totalPages);
-    }
+
+    pages = getRenderNumbers(renderSize, distribution, currentPage, totalPages);
+
     return (
       <>
         {pages.map((n) => (
