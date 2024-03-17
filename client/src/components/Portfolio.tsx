@@ -2,7 +2,6 @@ import React from "react";
 import { IconType } from "react-icons";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import { FaPaintBrush } from "react-icons/fa";
 import { HiOutlinePaintBrush } from "react-icons/hi2";
 import { HiPencil } from "react-icons/hi2";
 import { useState } from "react";
@@ -52,8 +51,6 @@ const Portfolio = ({
   const [showInput, setShowInput] = useState(false);
   const [showEdit, setShowEdit] = useState(true);
 
-  // const [];
-
   const handleLinkChange = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLink(input);
@@ -66,7 +63,7 @@ const Portfolio = ({
   };
 
   return (
-    <div className="w-full flex flex-col bg-white">
+    <div className="w-full flex flex-col ">
       <div className="flex items-center gap-4 h-[80px] mb-4 text-black ">
         <div
           className={`h-full rounded-[8px] w-[80px] drop-shad ${bgColor} flex justify-center items-center`}
