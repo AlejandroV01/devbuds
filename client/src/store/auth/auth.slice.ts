@@ -14,7 +14,7 @@ interface IProfile {
   portfolio_link?: string | null
   skills: string[]
   languages: string[]
-  created_at: Date
+  created_at: Date | null | string
   uuid: string
 }
 const initialState: IProfile = {
@@ -28,7 +28,7 @@ const initialState: IProfile = {
   location: '',
   skills: [],
   languages: [],
-  created_at: new Date(),
+  created_at: null,
   uuid: '',
 }
 
