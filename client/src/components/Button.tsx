@@ -1,9 +1,9 @@
 interface ButtonProps {
   variant: "primary" | "secondary" | "success" | "destructive";
   disabled?: boolean;
-  onClick?: () => void;
-  className: string;
-  children: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  className?: string;
+  children: string | React.ReactNode;
 }
 
 const Button = ({
