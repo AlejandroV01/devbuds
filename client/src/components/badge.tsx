@@ -1,11 +1,18 @@
-interface BadgeProps {
-  variant?: "primary" | "secondary" | "success" | "warning" | "danger";
-  label: string;
-  size?: "small" | "medium" | "large";
-  className?: string;
-}
+import React from 'react'
+import { IconBaseProps } from 'react-icons'
 
-const Badge = ({ variant, label, size, className }: BadgeProps) => {
+interface BadgeProps {
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
+  label: string
+  size?: 'small' | 'medium' | 'large'
+  icon?: React.ElementType<IconBaseProps>
+  className?: string
+  onClick?: () => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  key?: any
+}
+  
+const Badge: React.FC<BadgeProps> = ({ key, onClick, className, variant, label, size, icon: Icon }: BadgeProps) => {
   const getVariantClasses = () => {
     switch (variant) {
       case "primary":
@@ -37,12 +44,15 @@ const Badge = ({ variant, label, size, className }: BadgeProps) => {
   };
 
   return (
-    <span
-      className={`inline-block rounded-full ${getVariantClasses()} ${getSizeClasses()} ${className}`}
+    <div
+      key={key}
+      onClick={onClick}
+      className={`${className} flex rounded-full items-center justify-center gap-1 ${getVariantClasses()} ${getSizeClasses()}`}
     >
-      {label}
-    </span>
-  );
-};
+      <span>{label}</span>
+      {Icon && <Icon />}
+    </div>
+  )
+}
 
 export default Badge;

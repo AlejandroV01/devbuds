@@ -1,5 +1,5 @@
 import React from 'react'
-
+//changed Badge file name
 const Home = () => {
   return (
     <div>

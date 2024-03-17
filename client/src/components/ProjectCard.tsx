@@ -37,8 +37,7 @@ const ProjectCard: React.FC<CardProps> = ({
 }) => {
   const [bookmarked, setBookmarked] = useState<boolean>(false);
 
-  const handleBookmarkBtnOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+  const handleBookmarkBtnOnClick = () => {
     setBookmarked(!bookmarked);
   };
 
@@ -48,7 +47,6 @@ const ProjectCard: React.FC<CardProps> = ({
       style={{
         width: width,
       }}
-      onClick={onClick}
     >
       <div className="p-5">
         {/* Card Header */}
@@ -104,7 +102,7 @@ const ProjectCard: React.FC<CardProps> = ({
           </div>
         )}
         <div className="flex flex-row py-3 gap-2">
-          <Button variant="primary" className="w-full">
+          <Button variant="primary" className="w-full" onClick={onClick}>
             Apply
           </Button>
           <Button

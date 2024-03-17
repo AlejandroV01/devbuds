@@ -23,7 +23,6 @@ const Button = ({
         return "bg-destructive";
     }
   };
-
   return (
     <button
       disabled={disabled}
