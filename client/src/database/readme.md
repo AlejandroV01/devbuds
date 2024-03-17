@@ -1,3 +1,70 @@
+<!-- CREATE TABLE profiles (
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    school TEXT NOT NULL,
+    major TEXT NOT NULL,
+    location TEXT NOT NULL,
+    linkedin_link TEXT,
+    github_link TEXT,
+    portfolio_link TEXT,
+    skills TEXT[],
+    languages TEXT[],
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+);
+
+CREATE TABLE experiences (
+    profile_id BIGINT REFERENCES profiles (id),
+    company TEXT NOT NULL,
+    title TEXT NOT NULL,
+    start_date TEXT NOT NULL,
+    end_date TEXT NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE educations (
+    profile_id BIGINT REFERENCES profiles (id),
+    school TEXT NOT NULL,
+    major TEXT NOT NULL,
+    start_date TEXT NOT NULL,
+    end_date TEXT NOT NULL
+);
+
+CREATE TABLE projects (
+    profile_id BIGINT REFERENCES profiles (id),
+    project_name TEXT NOT NULL,
+    working_title TEXT NOT NULL,
+    start_date TEXT NOT NULL,
+    end_date TEXT NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE ideas (
+    idea_id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    profile_id BIGINT REFERENCES profiles (id),
+    idea_title TEXT NOT NULL,
+    idea_description TEXT NOT NULL,
+    tech_stack TEXT[] NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    front_end INT NOT NULL,
+    back_end INT NOT NULL,
+    full_stack INT NOT NULL,
+    ux_ui INT NOT NULL
+);
+
+CREATE TABLE idea_applicants (
+    idea_id BIGINT REFERENCES ideas(idea_id),
+    profile_id BIGINT REFERENCES profiles(id),
+    PRIMARY KEY (idea_id, profile_id)
+);
+
+CREATE TABLE idea_saves (
+    idea_id BIGINT REFERENCES ideas(idea_id),
+    profile_id BIGINT REFERENCES profiles(id),
+    PRIMARY KEY (idea_id, profile_id)
+); -->
+
 ````markdown
 # Documentation
 
