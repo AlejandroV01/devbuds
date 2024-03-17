@@ -81,7 +81,7 @@ const ProjectCard: React.FC<CardProps> = ({
                   key={i}
                   label={badge}
                   size="medium"
-                  className="shadow-md bg-gray-300 text-gray-950"
+                  className="!shadow-md !bg-gray-300 !text-black"
                 />
               );
             })}
