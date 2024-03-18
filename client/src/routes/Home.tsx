@@ -1,4 +1,4 @@
-import React from 'react'
+import CheckboxComponent from '@/components/ui/checkbox'
 
 const Home = () => {
   return (
