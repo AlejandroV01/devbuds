@@ -1,11 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-interface IProfile {
+export interface IProfile {
   id: number | null
   first_name: string
   last_name: string
   email: string
-  password_hash: string
   school: string
   major: string
   location: string
@@ -22,7 +21,6 @@ const initialState: IProfile = {
   first_name: '',
   last_name: '',
   email: '',
-  password_hash: '',
   school: '',
   major: '',
   location: '',
@@ -43,7 +41,6 @@ export const authSlice = createSlice({
         first_name: action.payload.first_name,
         last_name: action.payload.last_name,
         email: action.payload.email,
-        password_hash: action.payload.password_hash,
         school: action.payload.school,
         major: action.payload.major,
         location: action.payload.location,
