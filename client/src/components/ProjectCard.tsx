@@ -43,7 +43,7 @@ const ProjectCard: React.FC<CardProps> = ({
 
   return (
     <div
-      className={`flex flex-col border border-black  rounded-lg`}
+      className={`flex flex-col border border-black dark:bg-black rounded-lg`}
       style={{
         width: width,
       }}
@@ -68,7 +68,7 @@ const ProjectCard: React.FC<CardProps> = ({
                 {college} | {major}
               </h3>
               <span className="text-sm font-light text-slate-500">
-                {created}
+                Posted on {created}
               </span>
             </div>
           </div>
