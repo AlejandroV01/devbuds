@@ -6,10 +6,10 @@ const Nav = () => {
   const user = useAppSelector(state => state.auth)
   return (
     <div className='flex justify-between container items-center h-[60px]'>
-      <h2 className='font-bold text-xl'>
-        <a href='/'>Devbuds</a>
-      </h2>
-      <ul className='flex gap-5 font-medium [&>*]:hover:cursor-pointer'>
+      <a href='/'>
+        <h2 className='font-bold text-xl'>Devbuds</h2>
+      </a>
+      <ul className='flex gap-5 change [&>*]:hover:cursor-pointer'>
         <li>
           <a href='/projects'>Projects</a>
         </li>

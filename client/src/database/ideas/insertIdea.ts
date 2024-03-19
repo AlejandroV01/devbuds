@@ -1,5 +1,4 @@
 import supabase from '@/lib/supabaseClient'
-import { IIdeaCreate } from '@/routes/Home'
 
 // CREATE TABLE ideas (
 //   idea_id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -13,6 +12,16 @@ import { IIdeaCreate } from '@/routes/Home'
 //   full_stack INT NOT NULL,
 //   ux_ui INT NOT NULL
 // );
+interface IIdeaCreate {
+  id: number
+  title: string
+  description: string
+  techStack: string[]
+  frontend: number
+  backend: number
+  fullstack: number
+  uiux: number
+}
 const insertIdea = async (idea: IIdeaCreate) => {
   const { data, error } = await supabase
     .from('ideas')
