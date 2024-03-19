@@ -9,7 +9,7 @@ const Nav = () => {
       <a href='/'>
         <h2 className='font-bold text-xl'>Devbuds</h2>
       </a>
-      <ul className='flex gap-5 change [&>*]:hover:cursor-pointer'>
+      <ul className='flex gap-5 change [&>*]:hover:cursor-pointer font-medium'>
         <li>
           <a href='/projects'>Projects</a>
         </li>
