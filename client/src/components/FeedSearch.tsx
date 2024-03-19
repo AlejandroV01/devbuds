@@ -29,7 +29,7 @@ export default FeedSearch
 
 const SelectChoices = () => {
   return (
-    <div className='flex gap-2 justify-between'>
+    <div className='flex gap-2 justify-between w-fit border-1 border-black items-center'>
       <div className='flex gap-1'>
         <FiLayers />
         <span>Job type</span>
