@@ -17,8 +17,8 @@ const Nav = () => {
           <a href='/about'>About</a>
         </li>
       </ul>
-      {user.id ? (
-        <a href={`/profile/${user.id}`}>
+      {user.profile_id ? (
+        <a href={`/profile/${user.profile_id}`}>
           <Avatar firstName={user.first_name} lastName={user.last_name} size={45} />
         </a>
       ) : (
