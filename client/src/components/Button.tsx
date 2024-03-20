@@ -4,6 +4,7 @@ interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   children: string | React.ReactNode;
+  type?: "submit" | "reset" | "button";
 }
 
 const Button = ({
@@ -12,6 +13,7 @@ const Button = ({
   onClick,
   className,
   children,
+  type,
 }: ButtonProps) => {
   const checkButtonVariance = () => {
     switch (variant) {
@@ -28,6 +30,7 @@ const Button = ({
       disabled={disabled}
       className={`${checkButtonVariance()} px-3 py-1.5 text-white rounded font-medium w-fit ${className}`}
       onClick={onClick}
+      type={type}
     >
       {children}
     </button>
