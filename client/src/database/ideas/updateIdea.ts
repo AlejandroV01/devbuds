@@ -1,18 +1,18 @@
 import supabase from '@/lib/supabaseClient'
-import { IIdeaUpdate } from '@/routes/Home'
-const updateIdea = async (idea: IIdeaUpdate) => {
+import { IIdeaTableTypes } from '@/types'
+const updateIdea = async (idea: IIdeaTableTypes) => {
   const { data, error } = await supabase
     .from('ideas')
     .update({
-      idea_title: idea.title,
-      idea_description: idea.description,
-      tech_stack: idea.techStack,
-      front_end: idea.frontend,
-      back_end: idea.backend,
-      full_stack: idea.fullstack,
-      ux_ui: idea.uiux,
+      idea_title: idea.idea_title,
+      idea_description: idea.idea_description,
+      tech_stack: idea.tech_stack,
+      front_end: idea.front_end,
+      back_end: idea.back_end,
+      full_stack: idea.full_stack,
+      ux_ui: idea.ux_ui,
     })
-    .eq('idea_id', idea.id)
+    .eq('idea_id', idea.idea_id)
   if (data) {
     console.log(data)
     return true
