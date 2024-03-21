@@ -9,7 +9,7 @@ const fetchIdeasOnFilters = async (
 
   switch (role) {
     case "Frontend":
-      role_column_name = "front-end";
+      role_column_name = "front_end";
       break;
     case "Backend":
       role_column_name = "back_end";
