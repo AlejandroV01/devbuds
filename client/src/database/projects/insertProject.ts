@@ -1,17 +1,17 @@
-import supabase from "@/lib/supabaseClient";
+import supabase from '@/lib/supabaseClient'
 
 interface ProjectCreate {
-  profile_id: number;
-  project_name: string;
-  position_title: string;
-  start_date: string;
-  end_date: string;
-  description: string;
+  profile_id: number
+  project_name: string
+  position_title: string
+  start_date: string
+  end_date: string
+  description: string
 }
 
 const insertProject = async (project: ProjectCreate) => {
   const { data, error } = await supabase
-    .from("projects")
+    .from('projects')
     .insert([
       {
         profile_id: project.profile_id,
@@ -22,15 +22,15 @@ const insertProject = async (project: ProjectCreate) => {
         description: project.description,
       },
     ])
-    .select();
+    .select()
 
   if (data) {
-    console.log(data);
-    return true;
+    console.log(data)
+    return true
   } else {
-    console.error(error);
-    return false;
+    console.error(error)
+    return false
   }
-};
+}
 
-export default insertProject;
+export default insertProject
