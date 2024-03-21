@@ -16,7 +16,7 @@ const insertProject = async (project: ProjectCreate) => {
       {
         profile_id: project.profile_id,
         project_name: project.project_name,
-        position_title: project.position_title,
+        position_title: project.position_title, //error stops showing when position_title is called working_title
         start_date: project.start_date,
         end_date: project.end_date,
         description: project.description,
