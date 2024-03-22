@@ -1,30 +1,29 @@
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
-  
-export function SelectDemo({hoverColor, placeholder, label, array }: { hoverColor: string, placeholder: string, label: string, array: string[] }) {
-    return (
-        <Select>
-            <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder={placeholder} />
-            </SelectTrigger>
-            <SelectContent>
-                <SelectGroup>
-                <SelectLabel>{label}</SelectLabel>
-                {
-                    array.map((listItem: string) => (
-                        <SelectItem key={listItem} className={`cursor-pointer hover:bg-${hoverColor}`} value={listItem}>{listItem}</SelectItem>
-                    ))
-                }
-                </SelectGroup>
-            </SelectContent>
-        </Select>
-    )
+import React from 'react';
+import {Option} from '../types/index'
+
+export function SelectDemo({
+  options,
+  label,
+  onChange,
+}: {
+  label: string;
+  options: Option[];
+  onChange: (selection: Option) => void;
+}) {
+  return (
+    <select name={label} id={label} className='p-2 bg-white shadow-[0_0_3.5px_1px_rgba(0,0,0,0.3)] rounded-lg w-[180px]]'>
+        <option value={label}>{label}</option>
+        {
+            options.map((listItem) => (
+                <option 
+                    value={listItem.value} 
+                    onClick={() => onChange(listItem)} 
+                    key={listItem.value} 
+                >
+                    {listItem.label}
+                </option>
+            ))
+        }
+    </select>
+  )
 }
