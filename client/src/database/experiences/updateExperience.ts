@@ -10,11 +10,11 @@ import supabase from "@/lib/supabaseClient";
 //     );
 
 interface ExperienceTableTypes {
-  experience_id: number;
+  experienceId: number;
   company: string;
   title: string;
-  start_date: string;
-  end_date: string;
+  startDate: string;
+  endDate: string;
   description: string;
 }
 
@@ -24,11 +24,11 @@ const updateExperience = async (experience: ExperienceTableTypes) => {
     .update({
       company: experience.company,
       title: experience.title,
-      start_date: experience.start_date,
-      end_date: experience.end_date,
+      start_date: experience.startDate,
+      end_date: experience.endDate,
       description: experience.description,
     })
-    .eq("experience_id", experience.experience_id);
+    .eq("experience_id", experience.experienceId);
   if (data) {
     console.log(data);
     return true;
