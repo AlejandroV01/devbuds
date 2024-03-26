@@ -13,3 +13,13 @@ export interface IIdeaSavesTableTypes {
   idea_id: number
   profile_id: number
 }
+
+
+export interface IEducationTableTypes {
+  education_id: number
+  profile_id: string
+  school: string
+  major: string
+  start_date: string
+  end_date: string
+}
