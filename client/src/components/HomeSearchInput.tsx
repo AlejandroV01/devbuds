@@ -3,6 +3,8 @@ import { FaSearch } from 'react-icons/fa'
 import Button from './Button'
 import Input from './Input'
 import ShadowCard from './ShadowCard'
+//Job Type: Frontend, Backend, Full-Stack, UI/UX
+//Tech: React, TypeScript, Java
 function HomeSearchInput() {
   const [text, setText] = useState('')
   console.log(text)
