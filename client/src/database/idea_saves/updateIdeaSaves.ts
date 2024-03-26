@@ -1,20 +1,22 @@
 import supabase from "@/lib/supabaseClient";
-import { error, profile } from "console";
+import { error} from "console";
 
-const updateIdeaSaves = async (profile_id: number) => {
-    //Update idea saves to specific profile_id
-    const { data: profiles, error } = await supabase
+const updateIdeaSaves = async (newIdeaID: number, profile_id: number) => {
+    
+    const { data, error } = await supabase
     .from('idea_saves')
-    .update( { profile_id: profile_id.valueOf() } )
-    .eq('ideas_id', profile_id)
+    .update( {idea_id: newIdeaID} )
+    .eq('profile_id', profile_id)
     .select()
 
-    if (profiles) {
-        return profiles;
+    if (data) {
+        return data;
       } else {
         console.error(error);
         return null;
       }
 }
+
+export default updateIdeaSaves
 
 /* Implement a file that utilizes the Supabase API to update animalName information of a specific animal_id from the database table using the Supabase API*/
