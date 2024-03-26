@@ -23,10 +23,10 @@ const Nav = () => {
         </a>
       ) : (
         <div className='items-center flex gap-5'>
-          <a href='/login'>
+          <a href='/auth?login=true'>
             <Button variant='secondary'>Log in</Button>
           </a>
-          <a href='/signup'>
+          <a href='/auth?login=false'>
             <Button variant='primary'>Sign up</Button>
           </a>
           <ModeToggle />

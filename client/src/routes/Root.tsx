@@ -1,10 +1,11 @@
 import Nav from '@/components/Nav'
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 const Root = () => {
+  const location = useLocation()
   return (
     <main className='flex flex-col'>
-      <Nav />
+      {location.pathname !== '/auth' && <Nav />}
       <Outlet />
     </main>
   )
