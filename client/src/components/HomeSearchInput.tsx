@@ -3,23 +3,27 @@ import { FaSearch } from 'react-icons/fa'
 import Button from './Button'
 import Input from './Input'
 import ShadowCard from './ShadowCard'
-//Job Type: Frontend, Backend, Full-Stack, UI/UX
-//Tech: React, TypeScript, Java
-function HomeSearchInput() {
+
+interface HomeSearchInputProps {
+  handleSearch: () => void;
+}
+
+const HomeSearchInput: React.FC<HomeSearchInputProps> = ({ handleSearch }) => {
   const [text, setText] = useState('')
-  console.log(text)
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleSearch();
+  }
+
   return (
     <ShadowCard>
-      <h1>HomeSearchInput File</h1>
-      <Input type='text' value={text} onChange={e => setText(e.target.value)} />
-      <Button variant='primary'>
-        <FaSearch />
-      </Button>
-      <select name='Animals' id=''>
-        <option value='Pig'>Pig</option>
-        <option value='Pig'>Cow</option>
-        <option value='Pig'>Bird</option>
-      </select>
+      <form onSubmit={handleSubmit}>
+        <Input type='text' value={text} onChange={e => setText(e.target.value)} placeholder="Search..." />
+        <Button variant='primary' onClick={handleSearch}>
+          <FaSearch />
+        </Button>
+      </form>
     </ShadowCard>
   )
 }
