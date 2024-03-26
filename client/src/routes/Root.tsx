@@ -3,7 +3,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 const Root = () => {
   return (
-    <main className='flex flex-col'>
+    <main className='flex flex-col container'>
       <Nav />
       <Outlet />
     </main>

@@ -1,34 +1,26 @@
-import React, { useState } from 'react';
-import { IoSettingsOutline } from 'react-icons/io5';
+import React, { useState } from 'react'
+import { IoSettingsOutline } from 'react-icons/io5'
 
-interface Tab {
-  name: string;
-  icon: JSX.Element;
+export interface Tab {
+  name: string
+  icon: JSX.Element
 }
 
 interface Props {
-  active: string;
-  tabs: Tab[];
-  onTabClick?: (tabName: string) => void;
+  active: string
+  tabs: Tab[]
+  onTabClick: (tabName: string) => void
 }
 
 const SideNav: React.FC<Props> = ({ active, tabs, onTabClick }) => {
-  const [activeTab, setActiveTab] = useState<string | null>(null); // Change initial state to null
-
   const handleClick = (tabName: string) => {
-    setActiveTab(tabName);
-    if (onTabClick) {
-      onTabClick(tabName);
-    }
-  };
+    onTabClick(tabName)
+  }
 
   // Handle click for the Settings button
   const handleSettingsClick = () => {
-    setActiveTab('Settings');
-    if (onTabClick) {
-      onTabClick('Settings');
-    }
-  };
+    onTabClick('Settings')
+  }
 
   return (
     <center>
@@ -37,21 +29,19 @@ const SideNav: React.FC<Props> = ({ active, tabs, onTabClick }) => {
           {tabs.map((tab, index) => (
             <div
               key={index}
-              className={`flex gap-2 items-center rounded-lg cursor-pointer ${
-                activeTab === tab.name ? 'bg-black/30 p-1' : 'bg-transparent'
+              className={`flex gap-2 text-white items-center rounded-lg cursor-pointer ${
+                active === tab.name ? '!bg-black/30 p-1' : 'bg-transparent'
               }`}
               onClick={() => handleClick(tab.name)}
-              style={{ marginBottom: index === 0 ? '40px' : (index === tabs.length - 2,3 ? '20px' : '0') }}
+              style={{ marginBottom: index === 0 ? '40px' : (index === tabs.length - 2, 3 ? '20px' : '0') }}
             >
               {tab.icon}
               <h1 className='text-lg text-white'>{tab.name}</h1>
             </div>
           ))}
         </div>
-        <div 
-          className={`flex gap-2 items-center bg-black/0 rounded-lg cursor-pointer ${
-            activeTab === 'Settings' ? 'bg-black/30 p-1' : ''
-          }`}
+        <div
+          className={`flex gap-2 items-center bg-black/0 rounded-lg cursor-pointer ${active === 'Settings' ? 'bg-black/30 p-1' : ''}`}
           onClick={handleSettingsClick}
         >
           <IoSettingsOutline size={22} color='white' />
@@ -59,11 +49,10 @@ const SideNav: React.FC<Props> = ({ active, tabs, onTabClick }) => {
         </div>
       </div>
     </center>
-  );
-};
+  )
+}
 
-export default SideNav;
-
+export default SideNav
 
 // tabs={[
 //   { name: 'Profile', icon: <IoPersonOutline size={22} color='white'/> },
