@@ -70,9 +70,9 @@ const LoginCard = ({ isLogin }: { isLogin: string | null }) => {
           <Button variant='primary' children='Log In' className='w-full' />
         </form>
         <span className=''>
-          <span className='text-sm'>Don't have an account? </span>
+          {isLogin === 'true' ? <span className='text-sm'>Don't have an account? </span> : <span className='text-sm'>Have an account? </span>}
           <span className='text-sm text-primary underline cursor-pointer'>
-            <a href=''>Sign up</a>
+            {isLogin === 'true' ? <a href='/auth?login=false'>Sign up</a> : <a href='/auth?login=true'>Log in</a>}
           </span>
         </span>
       </div>
