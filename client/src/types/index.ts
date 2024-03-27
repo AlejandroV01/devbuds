@@ -14,7 +14,6 @@ export interface IIdeaSavesTableTypes {
   profile_id: number
 }
 
-
 export interface IEducationTableTypes {
   education_id: number
   profile_id: string
@@ -22,4 +21,14 @@ export interface IEducationTableTypes {
   major: string
   start_date: string
   end_date: string
+}
+
+export interface IExperienceTableTypes {
+  profile_id: number
+  experience_id: number
+  company: string
+  title: string
+  start_date: string
+  end_date: string
+  description: string
 }
