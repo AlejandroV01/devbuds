@@ -1,7 +1,7 @@
 import supabase from '@/lib/supabaseClient'
 import { IProfileTableTypes } from '@/types'
 
-const updateProfileById = async (profile_email: number, data: IProfileTableTypes): Promise<boolean> => {
+const updateProfileByEmail = async (profile_email: string, data: IProfileTableTypes): Promise<boolean> => {
   try {
     const { error } = await supabase.from('profiles').update(data).eq('email', profile_email)
 
@@ -17,4 +17,4 @@ const updateProfileById = async (profile_email: number, data: IProfileTableTypes
   }
 }
 
-export default updateProfileById
+export default updateProfileByEmail
