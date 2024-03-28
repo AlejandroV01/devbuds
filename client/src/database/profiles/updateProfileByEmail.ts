@@ -1,22 +1,9 @@
 import supabase from '@/lib/supabaseClient'
+import { IProfileTableTypes } from '@/types'
 
-interface UpdateProfileData {
-  first_name?: string
-  last_name?: string
-  email?: string
-  school?: string
-  major?: string
-  location?: string
-  linkedin_link?: string
-  github_link?: string
-  portfolio_link?: string
-  skills?: string[]
-  languages?: string[]
-}
-
-const updateProfileById = async (profile_id: number, data: UpdateProfileData): Promise<boolean> => {
+const updateProfileById = async (profile_email: number, data: IProfileTableTypes): Promise<boolean> => {
   try {
-    const { error } = await supabase.from('profiles').update(data).eq('profile_id', profile_id)
+    const { error } = await supabase.from('profiles').update(data).eq('email', profile_email)
 
     if (error) {
       console.error(error)

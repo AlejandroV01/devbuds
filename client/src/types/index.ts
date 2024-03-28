@@ -32,3 +32,17 @@ export interface IExperienceTableTypes {
   end_date: string
   description: string
 }
+
+export interface IProfileTableTypes {
+  first_name?: string
+  last_name?: string
+  email?: string
+  school?: string
+  major?: string
+  location?: string
+  linkedin_link?: string
+  github_link?: string
+  portfolio_link?: string
+  skills?: string[]
+  languages?: string[]
+}
